@@ -22,3 +22,10 @@
 - name: Include Purge Instructions
   include: purge.yml
   when: do_purge is defined and do_purge
+
+- name: Send AVS Archive
+  unarchive:
+      src: "{{ leo_storage_avs_archive }}"
+      dest: "{{ leo_storage_container_paths[0] }}/../"
+  when: send_avs is defined and send_avs
+
